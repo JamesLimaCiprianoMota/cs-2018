@@ -1,0 +1,101 @@
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+public class DiaDaSemana {
+	
+	public static void main(String args[]) {	
+		
+		int dataInteresse = Integer.parseInt(args[0]);		
+		int anoBase = Integer.parseInt(args[1]);
+		int dataReferencia = Integer.parseInt(args[2]);
+		
+		
+		anoBissexto(extraiAno(dataInteresse), extraiAno(dataReferencia));
+		
+		ultimoDiaMes(extraiMes(dataInteresse), extraiAno(dataInteresse), anoBase);
+		
+		diferencaEmDias(dataInteresse, dataReferencia);
+	}
+	
+	public static boolean anoBissexto (int anoInteresse, int anoReferencia) {
+		
+		boolean ocorre, exclui;
+		if (Math.abs(anoInteresse - anoReferencia) % 4 == 0)
+			ocorre = true;
+		else
+			ocorre = false;
+	
+		if (((anoInteresse % 100) == 0) && (anoInteresse % 400) != 0)
+			exclui = false;
+		else 
+			exclui = true;
+		
+		if ((anoInteresse == anoReferencia) || (ocorre && !exclui) == true)
+			return true;
+		else 
+			return false;
+	}
+	
+	public static Integer ultimoDiaMes(int mesInteresse, int anoInteresse, int anoBase){		
+		
+		int ultimoDia = 0;
+		
+		if (mesInteresse == 2)
+		{
+			if(anoBissexto(anoInteresse, anoBase))
+				ultimoDia =  29;
+		} else {
+			ultimoDia =  28;
+		}
+		return ultimoDia;
+	}
+	
+	public static Integer diferencaEmDias(LocalDate i, LocalDate f)
+	{
+		if(i.isAfter(f)) {
+			LocalDate ld = LocalDate.parse("20180404", DateTimeFormatter.ofPattern("yyyyMMdd"));
+			
+			LocalDate.of(year, month, dayOfMonth)
+		}
+		
+		
+		while (!i.equals(f)) {
+		
+		int diaInicio, mesInicio, anoInicio;
+		int diaFim, mesFim, anoFim;
+		
+		if (extraiAno(dataInteresse) > extraiAno(dataReferencia)) {
+			
+		} else {
+			if (extraiAno(dataInteresse) == extraiAno(dataReferencia)) {				
+				if(extraiMes(dataInteresse) > extraiMes(dataReferencia)) {
+					
+				}
+			}
+		}
+		anoInicio = extraiAno(dataReferencia);
+		mesInicio = extraiMes(dataReferencia);
+		diaInicio = extraiDia(dataReferencia);
+		anoFim = extraiAno(dataInteresse);
+		mesFim = extraiMes(dataInteresse);
+		diaFim = extraiDia(dataInteresse);
+		}
+	}
+	
+	public static int extraiAno(int data)
+	{
+		return data / 10000; 
+	}
+	
+	public static int extraiMes(int data)
+	{
+		return data /100 % 100;
+	}
+	
+	public static int extraiDia(int data)
+	{
+		return data % 100;
+	}
+}
