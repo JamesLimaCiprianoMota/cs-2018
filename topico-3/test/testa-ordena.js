@@ -10,7 +10,7 @@ ordena = require("../ordena");
 
 QUnit.test("ordena", function (assert) {
   // Executa a operação que desejamos testar
-  let resultado = ordena(" alo al o ");
+  let resultado = ordena.ordena(" alo al o ");
 
   // Verifica se o resultado produzido é o esperado.
   assert.equal(resultado, "aalloo", "Ordenação Realizada com sucesso");
